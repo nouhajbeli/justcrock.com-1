@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+  scroll-behavior: smooth;
+}
+h4{
+  font-weight: 300;
+   color:#111;
+}
+.banner
+{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("https://res.cloudinary.com/dtl8igxn0/image/upload/v1614967404/saladeavocattomateoignon-280x200_n2qud0.jpg")  no-repeat fixed  ;
+  background-size:cover;
+
+}
+.banner .content {
+  max-width:900px;
+  text-align:center;
+}
+.banner .content  h2{
+  font-size:2.5em;
+  color:#fff;
+}
+.banner .content  h4{
+  font-size:1em;
+  color:#fff;
+}
+.btn{
+  font-size:1em;
+  color:#fff;
+  background:#a6ff4d;
+  display: inline-block;
+  padding:10px 30px;
+  margin-top:20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  Letter-spacing:2px;
+  transition:2s
+}
+.btn:hover
+{
+Letter-spacing:6px;
+}
+@media (max-width:991px){
+  section {
+    padding:20px;
+
+  }
+  .banner .content h2{
+    font-size:3em;
+    color:#fff;
+  }
+
+}

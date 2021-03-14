@@ -1,0 +1,132 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/fddf5c0916.js" crossorigin="anonymous"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<app-navbar></app-navbar>
+<section>
+<section>
+
+<div id="body">
+<div class="container"  >
+        <div class="row">
+          <br/><br/><br/><br/>
+        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <br/><br/><br/><br/>
+            <h1 class="gallery-title">Recettes</h1>
+        </div>
+
+        <div  class='nav' style="text-align:center">
+            <button class="btn btn-default filter-button" data-filter="all">Tous les recettes</button>
+            <button class="btn btn-default filter-button" data-filter="hdpe">Entrée</button>
+            <button class="btn btn-default filter-button" data-filter="sprinkle">Plat Principal</button>
+            <button class="btn btn-default filter-button" data-filter="spray">Patisseries Recettes</button>
+            <button class="btn btn-default filter-button" data-filter="spray" routerLink='/addrecette'><i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+
+        </div>
+        <br/><br/>
+        <br/><br/>
+      </div>
+
+
+      <div class="row">
+        <br/>
+
+        <div class="col-12 col-md-6 col-lg-3" *ngFor="let recette of  myArray">
+          <div class="card" style="border:1px solid white">
+
+            <img
+              src="assets/uploads/recettes/{{recette.picture}}"
+              class="card-img-top"
+              alt="..." style="width:100%; height: 120px;"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{recette.title}}</h5>
+
+              <p class="card-text">
+              {{recette.description}}
+              </p>
+              <span
+              data-toggle="modal"
+              data-target="#modal-lg"
+              (click)="getfile(recette.pdf)"><i
+                class="fa fa-file-pdf-o"
+                style="
+                  color: red;
+                  text-align: center;
+                  margin-left: 5px;
+                  font-size: 30px;
+                "
+                aria-hidden="true"
+
+              ></i
+            ></span>
+            <a style="margin-left:220px; background: #42B32F" (click)="deleteRecette(recette._id)"><i class="fas fa-trash-alt"></i></a>
+            <br/>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <div class="modal fade" id="modal-lg" #modall>
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">tes</h4>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <img [src]="file" class="img-responsive" />
+                  </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-dismiss="modal"
+                  >
+                    hide
+                  </button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+</section>
+  <app-footer></app-footer>
