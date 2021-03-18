@@ -4,7 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 const recetteRoute = require("./routes/recette.route.js");
-
+const userRoute = require("./routes/user.route.js");
 
 
 mongoose
@@ -27,6 +27,7 @@ app.use(cors());
 
 
 app.use("/api/recette", recetteRoute);
+app.use("/api/user", userRoute);
 
 
 const PORT = process.env.PORT || 3000;

@@ -17,7 +17,8 @@ import { RecettesComponent } from './components/recettes/recettes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddrecetteComponent } from './components/addrecette/addrecette.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { AlertModule } from 'ngx-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationComponent } from './components/authentication/authentication.component';
 
 
 
@@ -35,7 +36,8 @@ import { AlertModule } from 'ngx-bootstrap';
     ContactComponent,
     FooterComponent,
     RecettesComponent,
-    AddrecetteComponent
+    AddrecetteComponent,
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,10 @@ import { AlertModule } from 'ngx-bootstrap';
     HttpClientModule,
     NgbModule,
     MDBBootstrapModule.forRoot(),
-    AlertModule.forRoot()
+    FormsModule,
+    ReactiveFormsModule
+
+
 
 
 

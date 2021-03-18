@@ -4,7 +4,7 @@ const recetteSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref:"User"
   },
-  title: {
+  titre: {
     type: String,
     required:true
   },
@@ -15,7 +15,7 @@ const recetteSchema = new mongoose.Schema({
       
     }
   ,
-  picture: 
+  image: 
     {
       type: String
     },

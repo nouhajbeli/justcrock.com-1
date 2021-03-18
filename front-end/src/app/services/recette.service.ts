@@ -21,4 +21,19 @@ export class RecetteService {
   deleteService(id: String) {
     return this.http.delete('http://localhost:3000/api/recette/' + id);
   }
+  addService (
+    titre: string,
+    description: string,
+    pdf: any,
+    image: any,
+   ){
+    const body = new FormData();
+    body.append('titre', titre);
+    body.append('description', description);
+    body.append('file', pdf);
+    body.append('file', image);
+
+
+    return this.http.post(this.urlApi, body);
+   }
 }

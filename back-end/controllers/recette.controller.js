@@ -24,10 +24,10 @@ module.exports = {
     console.log(req.files);
     const Recette = new recetteModel({
       IdUser: req.body.IdUser,
-      title: req.body.title,
+      titre: req.body.titre,
       description: req.body.description,
-      picture: reqFiles[0],
-      pdf: reqFiles[1],
+      image: reqFiles[1],
+      pdf: reqFiles[0],
       category:req.body.category
      
     });
