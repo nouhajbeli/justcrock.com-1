@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const app = express();
 const recetteRoute = require("./routes/recette.route.js");
 const userRoute = require("./routes/user.route.js");
+require('./config/passportConfig')
+const passport = require('passport');
 
 
 mongoose
@@ -23,8 +25,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
-
-
+app.use(passport.initialize());
 
 app.use("/api/recette", recetteRoute);
 app.use("/api/user", userRoute);

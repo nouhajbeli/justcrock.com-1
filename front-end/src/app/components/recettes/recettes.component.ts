@@ -18,11 +18,12 @@ export class RecettesComponent implements OnInit {
    this.getRecette()
   }
   getfile(f: any) {
-    console.log(f);
     this.file = '';
     this.file = this.sanitizer.bypassSecurityTrustResourceUrl(
       'assets/uploads/recettes/' + f
     );
+    console.log(f);
+
   }
   deleteRecette(id: string) {
     console.log(id);

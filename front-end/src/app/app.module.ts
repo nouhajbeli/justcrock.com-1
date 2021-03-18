@@ -18,7 +18,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddrecetteComponent } from './components/addrecette/addrecette.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationComponent } from './components/authentication/authentication.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -37,8 +39,10 @@ import { AuthenticationComponent } from './components/authentication/authenticat
     FooterComponent,
     RecettesComponent,
     AddrecetteComponent,
-    AuthenticationComponent
-  ],
+    UserProfileComponent,
+    SignUpComponent,
+    LoginComponent,
+     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
