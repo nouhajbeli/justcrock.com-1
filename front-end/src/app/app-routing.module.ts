@@ -8,6 +8,8 @@ import {RecettesComponent} from './components/recettes/recettes.component'
 import {AddrecetteComponent} from './components/addrecette/addrecette.component'
 import {SignUpComponent} from './components/sign-up/sign-up.component'
 import {LoginComponent}  from './components/login/login.component'
+import {UserProfileComponent } from './components/user-profile/user-profile.component'
+import {AuthGuard} from './components/auth/auth.guard';
 const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
@@ -16,8 +18,8 @@ const routes: Routes = [
   {path:'recette',component:RecettesComponent},
   {path:'addrecette',component:AddrecetteComponent},
   {path:'sign-up',component:SignUpComponent},
-  {path:'login',component:LoginComponent}
-
+  {path:'login',component:LoginComponent},
+  {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] }
 
 
 
