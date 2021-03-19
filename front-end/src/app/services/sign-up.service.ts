@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignUpService {
   http: HttpClient;
+  noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
+
   urlApi = 'http://localhost:3000/api/user/register';
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
@@ -24,6 +26,6 @@ export class SignUpService {
     };
 
 
-    return this.http.post(this.urlApi, body);
+    return this.http.post(this.urlApi, body,this.noAuthHeader);
    }
 }

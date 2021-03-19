@@ -18,6 +18,9 @@ export class LoginComponent implements OnInit {
   serverErrorMessages:any;
 
   ngOnInit(): void {
+    if(this.myService.isLoggedIn()){
+      this.router.navigateByUrl('/userProfile')
+    }
   }
   onSubmit(form:NgForm){
     this.myService.login(form.value).subscribe(

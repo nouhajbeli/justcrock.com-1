@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   http: HttpClient;
-
+noAuthHeader={headers:new HttpHeaders({'NoAuth':'True'})}
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
 
   }
   login(authCredentials:any){
-    return this.http.post('http://localhost:3000/api/user/authenticate',authCredentials)
+    return this.http.post('http://localhost:3000/api/user/authenticate',authCredentials,this.noAuthHeader)
   }
   setToken(token:any){
     localStorage.setItem('token',token)
@@ -20,8 +20,11 @@ export class UserService {
   deleteToken(){
     localStorage.removeItem('token')
   }
+  getToken(){
+    return localStorage.getItem('token')
+  }
   getUserPayload(){
-    var token=localStorage.getItem('token')
+    var token=this.getToken()
     if(token){
       var userPayload=atob(token.split('.')[1]);
       return JSON.parse(userPayload)
@@ -32,6 +35,7 @@ export class UserService {
   getUserProfile(){
     return this.http.get('http://localhost:3000/api/user/userProfile')
   }
+
   isLoggedIn(){
     var userPayload=this.getUserPayload()
     if(userPayload){
