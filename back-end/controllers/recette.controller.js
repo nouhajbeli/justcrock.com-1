@@ -28,7 +28,7 @@ module.exports = {
       description: req.body.description,
       image: reqFiles[1],
       pdf: reqFiles[0],
-      category:req.body.category
+      categorie:req.body.categorie
      
     });
     try {

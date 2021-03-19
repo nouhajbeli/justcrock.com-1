@@ -1,96 +1,87 @@
+<body>
+  <app-navbar></app-navbar>
+  <section   class="recette">
 
-<app-navbar></app-navbar>
-<div id="body">
-<br/><br /><br/><br/><br/><br/> <br/>
-<div class="container">
-  <h2 >Ajouter Nouvelle Recette</h2>
+    <div id="login">
+        <div class="container">
 
-  <div class="stepwizard">
-      <div class="stepwizard-row setup-panel">
-          <div class="stepwizard-step">
-              <a href="#step-1" type="button" class="btn btn-primary btn-circle">1</a>
-              <p>Step 1</p>
-          </div>
-          <div class="stepwizard-step">
-              <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
-              <p>Step 2</p>
-          </div>
-          <div class="stepwizard-step">
-              <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-              <p>Step 3</p>
-          </div>
-      </div>
-  </div>
-  <form   [formGroup]="loginForm">
-      <div class="row setup-content" id="step-1">
-          <div class="col-xs-12">
-              <div class="col-md-12">
-                  <h3> Step 1</h3>
-                  <div class="form-group">
-                      <label class="control-label">Titre</label>
-                      <input  maxlength="100" type="text" required="required"
-                       class="form-control" placeholder="Titre"  formControlName="titre"
-                       name="titre"
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
 
-                      />
-                  </div>
-                  <div class="form-group">
-                      <label class="control-label">Description</label>
-                      <textarea
-                      rows="5"
-                      formControlName="description"
-                      class="form-control"
-                      name="description"
-                    ></textarea>
-                  </div>
-                  <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-              </div>
-          </div>
-      </div>
-      <div class="row setup-content" id="step-2">
-          <div class="col-xs-12">
-              <div class="col-md-12">
-                  <h3> Step 2</h3>
-                  <div class="form-group">
-                    <label for="pdf">Pdf</label>
-                    <input
-                      formControlName="pdf"
-                      (change)="onSelectPdf($event)"
-                      type="file"
-                      name="pdf"
-                      accept="application/pdf"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label >Image<span class="require"></span></label>
-                    <input
-                      type="file"
-                      formControlName="image"
-                      accept="image/png, image/jpeg"
-                      (change)="onSelectimage($event)"
-                      name="image"
-                    />
-                  </div>
-                  <button class="btn btn-primary nextBtn btn-lg pull-right" type="button" >Next</button>
-              </div>
-          </div>
-      </div>
-      <div class="row setup-content" id="step-3">
-          <div class="col-xs-12">
-              <div class="col-md-12">
-                  <h3> Step 3</h3>
-                  <button class="btn btn-success btn-lg pull-right" type="submit" (click)="addrecette()">Finish!</button>
-              </div>
-          </div>
-      </div>
-  </form>
-  </div>
-<!------ Include the above in your HEAD tag ---------->
+                        <form id="login-form" [formGroup]="loginForm" (ngSubmit)="addrecette()">
+                          <h4 class="titleText" style="text-align:center;color:white">Ajouter recette</h4>
+                          <div class="form-group">
+                                <label for="titre"  class="text-info"  style="color:#42B32F">Titre:</label><br>
+                                <input type="titre" name="titre"   formControlName="titre"  [ngClass]="{ 'is-invalid': submitted && f.titre.errors }"  id="titre" class="form-control"  required
+                               >
+                               <div *ngIf="submitted && f.titre.errors" class="invalid-feedback">
+                                <div *ngIf="f.titre.errors.required"> Titre is required</div>
+                            </div>
+                              </div>
+                            <div class="form-group">
+                                <label for="description" class="text-info"  style="color:#42B32F">Description:</label><br>
+                                <textarea  rows="2" cols="30"
+                                  name="description" formControlName="description"
+                                id="description"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                                </textarea>
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.description.errors.required">description is required</div>
+                              </div>
+                              </div>
+                              <div class="form-group">
+                                <label for="pdf" class="text-info" >Pdf: </label>
+                                <input
+                                  formControlName="pdf"
+                                  (change)="onSelectPdf($event)"
+                                  type="file"
+                                  name="pdf"
+                                  accept="application/pdf"
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="pdf" class="text-info" >Image:</label>
+                                <input
+                                  formControlName="image"
+                                  (change)="onSelectimage($event)"
+                                  type="file"
+                                  name="pdf"
+                                  accept="image/png, image/jpeg"
+                                />
+                              </div>
+                              <div class="form-group">
+                                <label for="categorie" class="text-info">Categorie :</label>
 
+                                <select
+                                  name="cat"
+                                  required
+                                  formControlName="categorie"
+                                  placeholder="select categorie"
+                                  class="form-control"
+                                >
+                                  >
+                                  <option value="default" disabled selected hidden>
+                                    Please Choose...
+                                  </option>
 
+                                  <option *ngFor="let cat of categories" [ngValue]="cat">
+                                    {{ cat }}
+                                  </option>
 
+                                </select>
+                              </div>
+                            <div class="form-group">
+                                <input type="submit"  name="submit"  class="btn btn-info btn-md"style="background-color:#42B32F" value="Ajouter">
+                            </div>
 
+                        </form>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <app-footer></app-footer>
 
-</div>
-<app-footer></app-footer>
+</body>

@@ -23,7 +23,7 @@ const recetteSchema = new mongoose.Schema({
     {
       type: String
     },
-     category:
+     categorie:
     {
     type:String
     },

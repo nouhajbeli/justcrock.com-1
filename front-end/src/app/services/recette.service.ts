@@ -26,12 +26,14 @@ export class RecetteService {
     description: string,
     pdf: any,
     image: any,
+    categorie:any
    ){
     const body = new FormData();
     body.append('titre', titre);
     body.append('description', description);
     body.append('file', pdf);
     body.append('file', image);
+    body.append('categorie', categorie);
 
 
     return this.http.post(this.urlApi, body);

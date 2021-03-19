@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  AbstractControl,
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import {RecetteService} from './../../services/recette.service';
 import { Router } from '@angular/router';
 
@@ -16,16 +12,27 @@ import { Router } from '@angular/router';
 export class AddrecetteComponent implements OnInit {
   loginForm: any;
   files: any = [];
+  categories: any = [
+    'Entrée',
+    'Plat Principal',
+    'Patisseries Recettes',
+
+  ];
+  submitted = false;
 
   constructor(
     private myservice: RecetteService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {
-    this.loginForm = new FormGroup({
-      titre: new FormControl(null, Validators.required),
-      image: new FormControl(null, Validators.required),
-      pdf: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
+    this.loginForm = this.formBuilder.group({
+       titre: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      image: ['',[Validators.required]],
+      pdf: ['',[Validators.required]],
+      categorie:['',[Validators.required]]
+
+
 
     });
   }
@@ -37,7 +44,15 @@ export class AddrecetteComponent implements OnInit {
   onSelectPdf(event: any) {
     this.files.push(event.target.files[0]);
   }
+  get f() { return this.loginForm.controls; }
+
   addrecette() {
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.loginForm.invalid) {
+        return;
+    }
     this.loginForm.image = this.files[1];
     this.loginForm.pdf = this.files[0];
 
@@ -46,7 +61,8 @@ export class AddrecetteComponent implements OnInit {
         this.loginForm.value.titre,
         this.loginForm.value.description,
         this.loginForm.pdf,
-        this.loginForm.image)
+        this.loginForm.image,
+        this.loginForm.value.categorie)
       .subscribe((data) => {
         console.log("recette added", data)
         this.router.navigate(['recette']).then(() => {
