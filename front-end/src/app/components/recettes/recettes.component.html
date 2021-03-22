@@ -15,11 +15,11 @@
         </div>
 
         <div  class='nav' style="text-align:center">
-            <button class="btn btn-default filter-button" data-filter="all">Tous les recettes</button>
-            <button class="btn btn-default filter-button" data-filter="hdpe" value="Entée">Entrée</button>
-            <button class="btn btn-default filter-button" data-filter="sprinkle">Plat Principal</button>
-            <button class="btn btn-default filter-button" data-filter="spray">Patisseries Recettes</button>
-            <button class="btn btn-default filter-button" data-filter="spray" routerLink='/addrecette'><i class="fa fa-plus" aria-hidden="true"></i>
+            <button class="btn btn-default filter-button" data-filter="all" value="All"   (click)="handleClick($event)">Tous les recettes</button>
+            <button class="btn btn-default filter-button" data-filter="hdpe" value="Entrée" (click)="handleClick($event)">Entrée</button>
+            <button class="btn btn-default filter-button" data-filter="sprinkle" value="Plat Principal" (click)="handleClick($event)">Plat Principal</button>
+            <button class="btn btn-default filter-button" data-filter="spray" value="Patisseries Recettes" (click)="handleClick($event)">Patisseries Recettes</button>
+            <button class="btn btn-default filter-button" data-filter="spray"  routerLink='/addrecette'><i class="fa fa-plus" aria-hidden="true"></i>
             </button>
 
         </div>
