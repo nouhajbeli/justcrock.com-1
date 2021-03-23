@@ -10,6 +10,8 @@ import {SignUpComponent} from './components/sign-up/sign-up.component'
 import {LoginComponent}  from './components/login/login.component'
 import {UserProfileComponent } from './components/user-profile/user-profile.component'
 import {AuthGuard} from './components/auth/auth.guard';
+import {DetailsComponent} from './components/details/details.component';
+
 const routes: Routes = [
   {path:'about',component:AboutComponent},
   {path:'contact',component:ContactComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:'addrecette',component:AddrecetteComponent},
   {path:'sign-up',component:SignUpComponent},
   {path:'login',component:LoginComponent},
-  {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] }
+  {path:'userProfile',component:UserProfileComponent,canActivate:[AuthGuard] },
+  {path:'details',component:DetailsComponent,pathMatch: 'full' }
+
 
 
 

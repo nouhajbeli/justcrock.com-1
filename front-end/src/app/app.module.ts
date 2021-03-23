@@ -23,8 +23,9 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserService } from './services/user.service';
 import {AuthGuard} from './components/auth/auth.guard';
-import {AuthInterceptor} from './components/auth/auth.interceptor'
-
+import {AuthInterceptor} from './components/auth/auth.interceptor';
+import { DetailsComponent } from './components/details/details.component'
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {AuthInterceptor} from './components/auth/auth.interceptor'
     UserProfileComponent,
     SignUpComponent,
     LoginComponent,
+    DetailsComponent,
      ],
   imports: [
     BrowserModule,
@@ -51,11 +53,9 @@ import {AuthInterceptor} from './components/auth/auth.interceptor'
     NgbModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
-
-
-
-
+    ReactiveFormsModule,
+    RouterModule,
+    AppRoutingModule
 
   ],
   providers: [{ provide: HTTP_INTERCEPTORS,

@@ -48,6 +48,15 @@ module.exports = {
       res.send(error);
     }
   },
+  async getrecetteById(req, res, next) {
+    try {
+      const recette = await recetteService.getRecetteById(req.params);
+      res.send(recette);
+    } catch (error) {
+      // handle error
+      res.send(error);
+    }
+  },
  
   async updateRecette(req, res, next) {
     try {

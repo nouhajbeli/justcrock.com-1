@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RecetteService} from './../../services/recette.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recettes',
@@ -12,7 +13,8 @@ export class RecettesComponent implements OnInit {
   file: any;
   categorie:any
 
-  constructor(private myService: RecetteService,private sanitizer: DomSanitizer,) { }
+  constructor(private myService: RecetteService,private sanitizer: DomSanitizer, private router: Router
+    ) { }
 
   ngOnInit(): void {
    this.getRecette()
@@ -60,6 +62,11 @@ export class RecettesComponent implements OnInit {
     this.categorie=(event.currentTarget  as HTMLButtonElement).value
     console.log(this.categorie)
     this.getRecette()
+  }
+  getrecette(id:any){
+    this.router.navigate(['details',  { id: id }]).then(() => {
+      location.reload();
+    });
   }
 
 }

@@ -29,5 +29,6 @@ var upload = multer({
 router.post("/",upload.array("file", 2), recetteController.addRecette);
 router.delete("/:_id",recetteController.deleteRecetteById)
 router.put("/:_id",recetteController.updateRecette)
+router.get("/:_id", recetteController.getrecetteById);
 
 module.exports = router;

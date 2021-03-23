@@ -32,7 +32,8 @@
         <br/>
 
         <div class="col-12 col-md-6 col-lg-3" *ngFor="let recette of  myArray">
-          <div class="card" style="border:1px solid white">
+          <div class="card" style="border:1px solid white" (click)="getrecette(recette._id)"
+          >
 
             <img
               src="assets/uploads/recettes/{{recette.image}}"

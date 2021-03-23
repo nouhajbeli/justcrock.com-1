@@ -38,4 +38,7 @@ export class RecetteService {
 
     return this.http.post(this.urlApi, body);
    }
+   getrecetteById(id: string) {
+    return this.http.get('http://localhost:3000/api/recette/' + id);
+  }
 }

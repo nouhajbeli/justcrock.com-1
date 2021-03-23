@@ -16,5 +16,8 @@ module.exports = new (class RecetteService {
     updateRecette({_id},paylod){
       return this.recette.findByIdAndUpdate(_id,paylod)
     }
+    getRecetteById({_id}) {
+      return this.recette.findById(_id)
+    }
     
   })();
