@@ -26,6 +26,7 @@ import {AuthGuard} from './components/auth/auth.guard';
 import {AuthInterceptor} from './components/auth/auth.interceptor';
 import { DetailsComponent } from './components/details/details.component'
 import { RouterModule, Routes } from '@angular/router';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RouterModule, Routes } from '@angular/router';
     SignUpComponent,
     LoginComponent,
     DetailsComponent,
+    ChatComponent,
      ],
   imports: [
     BrowserModule,

@@ -1,24 +1,22 @@
 const passport=require('passport');
 const localStrategy=require('passport-local').Strategy;
-const mongoose = require("mongoose");
 const User= require("../models/user.model.js");
+const bcrypt=require('bcryptjs')
 
-passport.use(
-    
-        new localStrategy({
-            usernameField:'email'
-        }, (username,password,done)=>{
-            User.findOne({ email:username},(err,user)=>{
-                if(err)
-                return done(err)
 
-                else if (!user)
-                return done(null,false,{message:'Email is not registered'})
-                else if(!user.verifyPassword(password))
-                return done(null,false, {message:'wrong password'})
-                else 
-                return done(null,user)
-            });
+passport.use(new localStrategy({
+    usernameField:'email'
+},function(username, password, done){
+    User.findOne({
+      where: {
+        email: username
+      }
+    }).then(function(user, err){
+      if (err) { return done(err); }
+      if (!user) { 
+        return done(null,false,{message:'Email is not registered'})}
+        if (!bcrypt.compareSync(password, user.password)){ 
+            return done(null,false, {message:'wrong password'})}
+            return done(null,user)
         })
-    
-)
+  }))

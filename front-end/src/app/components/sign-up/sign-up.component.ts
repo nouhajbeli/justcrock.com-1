@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SignUpService} from './../../services/sign-up.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,7 @@ email:any;
 password:any;
 registerForm: any;
 submitted = false;
-  constructor(private myService: SignUpService,private formBuilder: FormBuilder) { }
+  constructor(private myService: SignUpService,private formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -33,6 +34,8 @@ submitted = false;
     )
       .subscribe((data) => {
         console.log("user added", data)
+        this.router.navigateByUrl('/login')
+
 
 
       })
@@ -46,9 +49,8 @@ submitted = false;
       if (this.registerForm.invalid) {
           return;
       }
-
+      this.adduser()
       // display form values on success
-      alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
   }
 
 }

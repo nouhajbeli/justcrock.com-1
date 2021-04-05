@@ -7,10 +7,12 @@ module.exports.verifyJwtToken=(req,res, next)=>{
    return res.status(403).send({auth:false,message:'no token provided'})
    else {
        jwt.verify(token,'SECRET#123',(err,decoded)=>{
+           console.log(err)
            if(err)
            return res.status(500).send({auth:false,message:'token authentication failed'})
          else {
-             req._id=decoded._id
+             console.log(decoded)
+             req.id=decoded.id
              next()
          }
       

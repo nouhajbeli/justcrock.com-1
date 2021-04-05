@@ -32,8 +32,6 @@ export class AddrecetteComponent implements OnInit {
       pdf: ['',[Validators.required]],
       categorie:['',[Validators.required]]
 
-
-
     });
   }
 
