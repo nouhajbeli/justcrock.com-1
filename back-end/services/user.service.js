@@ -5,8 +5,5 @@ module.exports = new (class userService {
   
     adduser(payload) {
       return this.user.create(payload);
-    }
-  
-  
-    
+    }  
   })();

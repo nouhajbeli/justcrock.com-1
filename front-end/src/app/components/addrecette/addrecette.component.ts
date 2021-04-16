@@ -63,9 +63,7 @@ export class AddrecetteComponent implements OnInit {
         this.loginForm.value.categorie)
       .subscribe((data) => {
         console.log("recette added", data)
-        this.router.navigate(['recette']).then(() => {
-          location.reload();
-        });
+        this.router.navigate(['recette'])
       });
   }
 }

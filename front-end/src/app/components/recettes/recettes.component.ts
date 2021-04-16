@@ -34,7 +34,8 @@ export class RecettesComponent implements OnInit {
     this.myService
       .deleteService(id)
 
-      .subscribe(() => {
+      .subscribe((data) => {
+        console.log(data)
         return this.getRecette();
       });
   }
