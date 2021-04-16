@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<script src="https://kit.fontawesome.com/fddf5c0916.js" crossorigin="anonymous"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
-<app-navbar></app-navbar>
 <section>
 <section>
 
@@ -16,11 +14,11 @@
         </div>
 
         <div  class='nav' style="text-align:center">
-            <button class="btn btn-default filter-button" data-filter="all">Tous les recettes</button>
-            <button class="btn btn-default filter-button" data-filter="hdpe">Entrée</button>
-            <button class="btn btn-default filter-button" data-filter="sprinkle">Plat Principal</button>
-            <button class="btn btn-default filter-button" data-filter="spray">Patisseries Recettes</button>
-            <button class="btn btn-default filter-button" data-filter="spray" routerLink='/addrecette'><i class="fa fa-plus" aria-hidden="true"></i>
+            <button class="btn btn-default filter-button" data-filter="all" value="All"   (click)="handleClick($event)">Tous les recettes</button>
+            <button class="btn btn-default filter-button" data-filter="hdpe" value="Entrée" (click)="handleClick($event)">Entrée</button>
+            <button class="btn btn-default filter-button" data-filter="sprinkle" value="Plat Principal" (click)="handleClick($event)">Plat Principal</button>
+            <button class="btn btn-default filter-button" data-filter="spray" value="Patisseries Recettes" (click)="handleClick($event)">Patisseries Recettes</button>
+            <button class="btn btn-default filter-button" data-filter="spray"  routerLink='/addrecette'><i class="fa fa-plus" aria-hidden="true"></i>
             </button>
 
         </div>
@@ -33,17 +31,18 @@
         <br/>
 
         <div class="col-12 col-md-6 col-lg-3" *ngFor="let recette of  myArray">
-          <div class="card" style="border:1px solid white">
+          <div class="card" style="border:1px solid white"
+          >
 
-            <img
-              src="assets/uploads/recettes/{{recette.picture}}"
+            <img (click)="getrecette(recette.id)"
+              src="assets/uploads/recettes/{{recette.image}}"
               class="card-img-top"
               alt="..." style="width:100%; height: 120px;"
             />
             <div class="card-body">
-              <h5 class="card-title">{{recette.title}}</h5>
+              <h5 class="card-title">{{recette.titre}}</h5>
 
-              <p class="card-text">
+              <p class="card-text" style="color:white">
               {{recette.description}}
               </p>
               <span
@@ -61,17 +60,10 @@
 
               ></i
             ></span>
-            <a style="margin-left:220px; background: #42B32F" (click)="deleteRecette(recette._id)"><i class="fas fa-trash-alt"></i></a>
+            <a style="margin-left:200px; background: #42B32F" (click)="deleteRecette(recette.id)"><i class="fas fa-trash-alt"></i></a>
             <br/>
             </div>
           </div>
-
-
-
-
-
-
-
 
 
 
@@ -92,7 +84,7 @@
                 </div>
                 <div class="modal-body">
                   <div class="embed-responsive embed-responsive-16by9">
-                    <img [src]="file" class="img-responsive" />
+                    <iframe class="embed-responsive-item" [src]="file"></iframe>
                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">
@@ -123,10 +115,14 @@
 
 
 
+
+
+
+
+
   </div>
   </div>
   </div>
   </div>
   </section>
 </section>
-  <app-footer></app-footer>

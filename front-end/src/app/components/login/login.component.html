@@ -1,0 +1,44 @@
+
+<body>
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+
+                        <form id="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                          <i class="fas fa-user" style="color: #42B32F;font-size: 60px; margin-left:130px"></i>
+                              <div class="form-group">
+                                <label for="email"  class="text-info"  style="color:#42B32F">Email:</label><br>
+                                <input type="email" name="email"   [(ngModel)]="model.email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"  id="email" class="form-control"  required
+                               >
+                               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div *ngIf="f.email.errors.required">Email is required</div>
+                                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                              </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info"  style="color:#42B32F">Password:</label><br>
+                                <input type="password" name="password"   id="password"  [(ngModel)]="model.password"
+                                formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                  <div *ngIf="f.password.errors.required">Password is required</div>
+                                  <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                              </div>
+                              </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"   style="color:#42B32F"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit"  name="submit"  class="btn btn-info btn-md"style="background-color:#42B32F" value="Login">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="#" class="text-info" routerLink="/sign-up" style="color:#42B32F">Register here</a>
+                            </div>
+                        </form>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
