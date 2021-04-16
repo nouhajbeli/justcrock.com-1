@@ -1,5 +1,6 @@
 const recetteService = require("../services/recette.service.js");
 const recetteModel= require("../models/recette.model.js");
+const recipe= require("../models/recette.model.js");
 
 
 module.exports = {
@@ -9,31 +10,35 @@ module.exports = {
       res.send(recettes);
     } catch (error) {
       // handle error
-      res.send(error);
+    next(error)      
     }
   },
 
  
 
   async addRecette(req, res, next) {
+    var Recipe = recipe.build();
+
     const reqFiles = [];
     const url = req.protocol + "://" + req.get("host");
     for (var i = 0; i < req.files.length; i++) {
       reqFiles.push(req.files[i].filename);
     }
     console.log(req.files);
-    const Recette = new recetteModel({
-      IdUser: req.body.IdUser,
-      title: req.body.title,
-      description: req.body.description,
-      picture: reqFiles[0],
-      pdf: reqFiles[1],
-      category:req.body.category
-     
-    });
     try {
-      const recette = await recetteService.addRecette(Recette);
-      res.send(recette);
+    const Recette = await recetteService.addRecette({
+      titre: req.body.titre,
+      description: req.body.description,
+      image: reqFiles[1],
+      pdf: reqFiles[0],
+      categorie:req.body.categorie,
+      ingredient :req.body.ingredient,
+
+    });
+   
+
+    
+      res.send(Recette);
     } catch (error) {
       // handle error
       res.send(error);
@@ -47,6 +52,15 @@ module.exports = {
       // handle error
       res.send(error);
     }
+  },
+  async getrecetteById(req, res, next) {
+    try {
+      const recette = await recetteService.getRecetteById(req.params);
+      res.send(recette);
+    } catch (error) {
+      // handle error
+          next(error)   
+         }
   },
  
   async updateRecette(req, res, next) {
